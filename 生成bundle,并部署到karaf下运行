@@ -1,0 +1,31 @@
+1. 创建maven工程
+
+通过eclipse来创建
+
+2. 编写类
+
+最少包含两个函数(非main)，一个用来响应启动，一个用来响应停止
+
+3. 配置osgi属性
+
+在resource目录下新建目录"/OSGI-INF/blueprint"，同时创建配置文件"blueprint.xml"
+
+[java] view plain copy
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"  
+    xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs" xmlns:cxf="http://cxf.apache.org/blueprint/core"  
+    xsi:schemaLocation="  
+ http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd  
+ http://cxf.apache.or g/blueprint/jaxrs http://cxf.apache.or g/schemas/blueprint/jaxrs.xsd  
+ http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">  
+  
+        <bean id="hswtest" class="sds.hsw.test.TService" init-method="start" destroy-method="stop"></bean>  
+</blueprint>  
+
+如图，一般使用到的只有<bean>属性，id为karaf中唯一标识(需要不存在同名bundle),class即入口类名,init-method即启动时调用的函数名,destroy-method停止bundle时候调用的函数名。更详细的资料:点击打开链接
+4. 最终结构如下图
+
+5. 编译成mvn架包后，讲target目录下的架包放置karaf安装目录下的deploy子目录下
+
+6.stop函数只有在通过karaf停止bundle时候才会调用到,直接关闭karaf并不会调用此函数
+
