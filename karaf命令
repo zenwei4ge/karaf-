@@ -1,0 +1,24 @@
+启动karaf：   bin\karaf
+停止karaf:   osgi:shutdown， 或者简单的是：shutdown
+查看可用的命令:      按提示键tab
+获得命令的帮助:     命令后加--help
+
+网络控制台 提供了一个运行时的图形概述
+          安装web控制台:features:install webconsole
+          访问Web控制台:  http://localhost:8181/system/console 使用karaf用户名和karaf密码来登录系统
+          改变web控制台端口号     创建属性文件etc/org.ops4j.pax.web.cfg并在后面添加如下属性设置改变端口
+                                    org.osgi.service.http.port=8181
+创建新的运行时实例： admin:create
+改变子实例端口号： admin:change-ssh-port 实例 端口号
+列出所有容器实例：  admin:list
+管理用户名和密码：目录/etc/users.properties属性文件
+la	显示所有安装的bundle
+list	显示用户的bundle
+service:list	显示active的OSGI服务。这个列表十分长。这里有一个方便的方法，就是你可以使用unix的管道，如 “ls
+exports	显示导出的packages和bundles，这个命令可以帮助你查找出package是来自哪里
+feature:list	显示所有feature包括已安装和未安装的
+feature:install webconsole	访问http://localhost:8181/system/console，用karaf/karaf登录并花些时间看下它所提供的信息
+diag	显示那些无法启动的bundle的诊断信息
+log:tail	显示日志。可以按ctrl-c返回控制台
+Ctrl-d	退出控制台。如果是主控制台，则karaf被关闭
+        
