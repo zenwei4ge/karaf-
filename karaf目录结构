@@ -1,0 +1,12 @@
+/bin: 启动脚本
+/etc: 初始化文件
+/data: 工作目录
+/cache: OSGi框架包缓存
+/generated-bundles: 部署使用的临时文件夹
+/log: 日志文件
+/deploy: 热部署目录
+/instances: 含有子实例的目录
+/lib: 包含引导库
+/lib/ext:JRE扩展目录
+/lib/endorsed: 赞同库目录
+/system: OSGi包库，作为一个Maven2存储库
